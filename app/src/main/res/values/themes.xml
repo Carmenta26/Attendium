@@ -2,7 +2,12 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Attendium" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@android:color/black</item> <!-- Cambia el color primario a negro -->
+        <item name="colorPrimaryVariant">@android:color/black</item> <!-- Cambia el color de la variante primaria a negro -->
+        <item name="colorOnPrimary">@android:color/white</item> <!-- Cambia el color en el primario a blanco -->
+        <item name="colorSecondary">@android:color/black</item> <!-- Cambia el color secundario a negro -->
+        <item name="colorSecondaryVariant">@android:color/black</item> <!-- Cambia el color de la variante secundaria a negro -->
+        <item name="colorOnSecondary">@android:color/white</item> <!-- Cambia el color en el secundario a blanco -->
     </style>
 
     <style name="Theme.Attendium" parent="Base.Theme.Attendium" />
