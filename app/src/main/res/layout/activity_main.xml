@@ -104,6 +104,16 @@
             android:paddingRight="64dp"
             android:text="@string/login"
             android:textColor="@color/white" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/preuba"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/ic_buttom"
+            android:paddingLeft="64dp"
+            android:paddingRight="64dp"
+            android:text="PRUEBA"
+            android:textColor="@color/white" />
     </LinearLayout>
 
 

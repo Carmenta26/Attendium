@@ -11,6 +11,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val signInButton = findViewById<AppCompatButton>(R.id.signInAppCompatButton)
+        val prueba = findViewById<AppCompatButton>(R.id.preuba)
+
+
+
+        signInButton.setOnClickListener {
+            // Acción al hacer clic en el botón
+            val intent = Intent(this, CatalogoEventos::class.java)
+            startActivity(intent)
+        }
 
         signInButton.setOnClickListener {
             // Acción al hacer clic en el botón
