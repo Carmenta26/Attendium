@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "69430320268",
+    "firebase_url": "https://attendium-8a90a-default-rtdb.firebaseio.com",
+    "project_id": "attendium-8a90a",
+    "storage_bucket": "attendium-8a90a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:69430320268:android:bf712d2269bd0fb70d2fa9",
+        "android_client_info": {
+          "package_name": "com.example.attendium"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmmttLTkVcGmKxlp9b9trgADXvGmZm0hI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
