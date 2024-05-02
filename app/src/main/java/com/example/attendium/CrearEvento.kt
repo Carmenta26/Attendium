@@ -61,8 +61,14 @@ class CrearEvento : AppCompatActivity() {
                 // Crear el objeto Evento con todos los datos
                 //Este es el objeto a mandar en firebase:
                 val evento = Evento(nombreEvento, fechaEvento, paquete)
+
+
                 val api = ApiCrearEvento()
                 api.crear(evento)
+
+                val intent = Intent(this@CrearEvento, PreSaveEvento::class.java)
+                intent.putExtra("evento", evento)
+                startActivity(intent)
 
                 println(evento)
 
