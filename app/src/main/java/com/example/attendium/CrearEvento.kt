@@ -1,14 +1,17 @@
 package com.example.attendium
 
+import ApiCrearEvento
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import com.example.attendium.adapters.AdapterPackage
 import com.example.attendium.data.Evento
 import com.example.attendium.data.Paquete
 import com.example.attendium.databinding.ActivityCrearEventoBinding
+import kotlinx.coroutines.launch
 
 class CrearEvento : AppCompatActivity() {
     private lateinit var binding: ActivityCrearEventoBinding
@@ -26,25 +29,14 @@ class CrearEvento : AppCompatActivity() {
                 "Paquete Básico",
                 listOf("Permiso de alcoholes", "Comida de 2 tiempos", "Decoración incluida"),
                 "$100.00"
-            ),
-            Paquete(
-                "Paquete Premium",
-                listOf(
-                    "Permiso de alcoholes extendido",
-                    "Comida de 3 tiempos",
-                    "Decoración incluida"
-                ),
-                "$200.00"
-            ),
-            Paquete(
-                "Paquete VIP",
-                listOf(
-                    "Barra libre",
-                    "Chef personal",
-                    "Seguridad privada",
-                    "Entretenimiento musical"
-                ),
-                "$500.00"
+            ), Paquete(
+                "Paquete Premium", listOf(
+                    "Permiso de alcoholes extendido", "Comida de 3 tiempos", "Decoración incluida"
+                ), "$200.00"
+            ), Paquete(
+                "Paquete VIP", listOf(
+                    "Barra libre", "Chef personal", "Seguridad privada", "Entretenimiento musical"
+                ), "$500.00"
             )
             // Puedes añadir más paquetes aquí
         )
@@ -62,8 +54,6 @@ class CrearEvento : AppCompatActivity() {
         }
         binding.gridViewPaquetes.adapter = adapter
 
-
-
         binding.seleccionar.setOnClickListener {
             val nombreEvento = binding.eventName.text.toString()
             val fechaEvento = binding.eventDate.text.toString()
@@ -71,16 +61,10 @@ class CrearEvento : AppCompatActivity() {
                 // Crear el objeto Evento con todos los datos
                 //Este es el objeto a mandar en firebase:
                 val evento = Evento(nombreEvento, fechaEvento, paquete)
+                val api = ApiCrearEvento()
+                api.crear(evento)
+
                 println(evento)
-
-
-                val intent = Intent(this@CrearEvento, PreSaveEvento::class.java)
-                intent.putExtra("evento", evento)
-                startActivity(intent)
-
-
-
-
 
                 // Aquí manejas el envío o procesamiento de los datos
                 Log.d(
