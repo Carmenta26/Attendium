@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Attendium"
         tools:targetApi="31">
         <activity
+            android:name=".CrearCuenta"
+            android:exported="false" />
+        <activity
             android:name=".PreSaveEvento"
             android:exported="false" />
         <activity
