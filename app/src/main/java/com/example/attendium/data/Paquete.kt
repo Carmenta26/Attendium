@@ -6,5 +6,5 @@ import kotlinx.parcelize.Parcelize
 data class Paquete(
     val titulo: String,
     val caracteristicas: List<String>,
-    val precio: String
+    val precio: Int
 ) : Parcelable

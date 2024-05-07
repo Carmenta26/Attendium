@@ -45,7 +45,7 @@ class AdapterPackage(private val context: Context, private val paquetes: List<Pa
             featureContainer.addView(featureView)
         }
 
-        selectButton.text = "Seleccionar - ${paquete.precio}"
+        selectButton.text = "Seleccionar - $${paquete.precio}"
 
         selectButton.setOnClickListener{
 

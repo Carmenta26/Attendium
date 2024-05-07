@@ -6,12 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
 import com.example.attendium.adapters.AdapterPackage
 import com.example.attendium.data.Evento
 import com.example.attendium.data.Paquete
 import com.example.attendium.databinding.ActivityCrearEventoBinding
-import kotlinx.coroutines.launch
 
 class CrearEvento : AppCompatActivity() {
     private lateinit var binding: ActivityCrearEventoBinding
@@ -28,15 +26,15 @@ class CrearEvento : AppCompatActivity() {
             Paquete(
                 "Paquete Básico",
                 listOf("Permiso de alcoholes", "Comida de 2 tiempos", "Decoración incluida"),
-                "$100.00"
+                100
             ), Paquete(
                 "Paquete Premium", listOf(
                     "Permiso de alcoholes extendido", "Comida de 3 tiempos", "Decoración incluida"
-                ), "$200.00"
+                ), 200
             ), Paquete(
                 "Paquete VIP", listOf(
                     "Barra libre", "Chef personal", "Seguridad privada", "Entretenimiento musical"
-                ), "$500.00"
+                ), 500
             )
             // Puedes añadir más paquetes aquí
         )
@@ -62,9 +60,6 @@ class CrearEvento : AppCompatActivity() {
                 //Este es el objeto a mandar en firebase:
                 val evento = Evento(nombreEvento, fechaEvento, paquete)
 
-
-                val api = ApiCrearEvento()
-                api.crear(evento)
 
                 val intent = Intent(this@CrearEvento, PreSaveEvento::class.java)
                 intent.putExtra("evento", evento)
