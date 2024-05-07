@@ -44,13 +44,13 @@ class MainActivity : AppCompatActivity() {
 
 
         val signInButton = findViewById<AppCompatButton>(R.id.signInAppCompatButton)
-        val prueba = findViewById<AppCompatButton>(R.id.preuba)
+        val createAccout = findViewById<AppCompatButton>(R.id.createAccountButton)
 
-//        signInButton.setOnClickListener {
-//            // Acción al hacer clic en el botón
-//            val intent = Intent(this, CatalogoEventos::class.java)
-//            startActivity(intent)
-//        }
+        createAccout.setOnClickListener {
+            // Acción al hacer clic en el botón
+            val intent = Intent(this, CrearCuenta::class.java)
+            startActivity(intent)
+        }
 //
 //        signInButton.setOnClickListener {
 //            // Acción al hacer clic en el botón

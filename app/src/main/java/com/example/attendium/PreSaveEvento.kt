@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import com.example.attendium.data.Evento
 import com.example.attendium.data.Invitado
 
 
@@ -19,7 +20,7 @@ class PreSaveEvento : AppCompatActivity() {
 
     // Lista para almacenar los invitados
     private val listaInvitados = mutableListOf<Invitado>()
-
+    private lateinit var evento: Evento
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pre_save_evento)
@@ -30,12 +31,21 @@ class PreSaveEvento : AppCompatActivity() {
         editTextCorreo = findViewById(R.id.editTextCorreo)
         containerInvitados = findViewById(R.id.containerInvitados)
 
+
+
+
+        // Recuperar el objeto Evento
+        evento = intent.getParcelableExtra("evento")!!
+
+
         val buttonAgregar = findViewById<Button>(R.id.buttonAgregar)
         buttonAgregar.setOnClickListener {
             val nombre = editTextNombre.text.toString()
             val telefono = editTextTelefono.text.toString()
             val correo = editTextCorreo.text.toString()
+            val eventoRecuperado = evento
 
+            println(evento.nombre)
             if (nombre.isNotBlank() && telefono.isNotBlank() && correo.isNotBlank()) {
                 // Crear un nuevo invitado y añadirlo a la lista
                 val nuevoInvitado = Invitado(nombre, telefono, correo)

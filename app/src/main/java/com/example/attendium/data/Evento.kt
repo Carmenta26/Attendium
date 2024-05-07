@@ -6,5 +6,6 @@ import kotlinx.parcelize.Parcelize
 data class Evento(
     val nombre: String,
     val fecha: String,
-    val paquete: Paquete
+    val paquete: Paquete,
+    val invitadosList: List<Invitado> = emptyList()
 ): Parcelable
