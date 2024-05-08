@@ -38,6 +38,18 @@
         android:id="@+id/agregarEventoButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Agregar pago"
+        android:background="@drawable/ic_buttom"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/pago"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/pago"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Agregar Evento"
         android:background="@drawable/ic_buttom"
         android:textColor="@android:color/white"

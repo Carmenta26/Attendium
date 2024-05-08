@@ -20,10 +20,16 @@ class CatalogoEventos : AppCompatActivity() {
         println(UserSession.getIdUsuario())
 
         val btnIrADetalles = findViewById<Button>(R.id.agregarEventoButton)
+        val toPago = findViewById<Button>(R.id.pago)
 
         btnIrADetalles.setOnClickListener {
             //listar()
             val intent = Intent(this, CrearEvento::class.java)
+            startActivity(intent)
+        }
+        toPago.setOnClickListener {
+            //listar()
+            val intent = Intent(this, Pago::class.java)
             startActivity(intent)
         }
     }
