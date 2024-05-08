@@ -74,19 +74,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/amountEditText" />
 
+
     <LinearLayout
         android:id="@+id/viewSeparadorpagos"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/addButton"
-        >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
             android:id="@+id/titleSeats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lista pagos"
+            android:text="Lista de pagos"
             android:textColor="@color/black"
             android:textAllCaps="true"
             android:textStyle="bold"
@@ -95,47 +97,53 @@
             android:layout_marginTop="20dp" />
 
         <View
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="2dp"
             android:background="@color/black"
             android:layout_marginHorizontal="15dp"
-            android:layout_marginTop="32dp"/>
+            android:layout_marginTop="32dp"
+            android:layout_weight="1"/>
     </LinearLayout>
 
     <ListView
+        android:id="@+id/listviewPagos"
         android:layout_width="0dp"
         android:layout_height="0dp"
-
-        app:layout_constraintStart_toStartOf="@id/viewSeparador"
-        app:layout_constraintTop_toBottomOf="@id/viewSeparadorpagos">
-
-    </ListView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewSeparadorpagos"
+        app:layout_constraintBottom_toTopOf="@id/viewSeparador" />
 
     <LinearLayout
         android:id="@+id/viewSeparador"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="468dp"
         android:orientation="horizontal"
-        >
+
+
+        app:layout_constraintBottom_toTopOf="@id/totalTextView"
+        app:layout_constraintTop_toBottomOf="@id/listviewPagos">
 
         <TextView
             android:id="@+id/view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lista pagos"
-            android:textColor="@color/black"
-            android:textAllCaps="true"
-            android:textStyle="bold"
-            android:textSize="20sp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:text="Totalización"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <View
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="2dp"
-            android:background="@color/black"
             android:layout_marginHorizontal="15dp"
-            android:layout_marginTop="32dp"/>
+            android:layout_marginTop="32dp"
+            android:layout_weight="1"
+            android:background="@color/black" />
     </LinearLayout>
 
     <TextView
@@ -144,8 +152,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Total: $300.00 MXN"
-        app:layout_constraintStart_toStartOf="@id/addButton"
-        app:layout_constraintTop_toBottomOf="@id/viewSeparador" />
+        app:layout_constraintTop_toBottomOf="@id/viewSeparador"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/paidTextView"
@@ -153,8 +161,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Pagado: $200.00 MXN"
-        app:layout_constraintStart_toStartOf="@id/totalTextView"
-        app:layout_constraintTop_toBottomOf="@id/totalTextView" />
+        app:layout_constraintTop_toBottomOf="@id/totalTextView"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/remainingTextView"
@@ -162,7 +170,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Restante: $100.00 MXN"
-        app:layout_constraintStart_toStartOf="@id/paidTextView"
-        app:layout_constraintTop_toBottomOf="@id/paidTextView" />
+        app:layout_constraintTop_toBottomOf="@id/paidTextView"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

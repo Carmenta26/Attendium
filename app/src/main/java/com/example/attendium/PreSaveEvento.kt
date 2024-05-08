@@ -82,7 +82,7 @@ class PreSaveEvento : AppCompatActivity() {
             } else {
                 // Añade la lista de invitados al evento
                 evento.invitados = listaInvitados
-                val intent = Intent(this, CrearEvento::class.java)
+                val intent = Intent(this, Pago::class.java)
                 intent.putExtra("precioFinal", precioFinal)
                 startActivity(intent)
                 val api = ApiCrearEvento()

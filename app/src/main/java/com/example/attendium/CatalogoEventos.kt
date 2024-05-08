@@ -22,9 +22,9 @@ class CatalogoEventos : AppCompatActivity() {
         val btnIrADetalles = findViewById<Button>(R.id.agregarEventoButton)
 
         btnIrADetalles.setOnClickListener {
-            listar()
-//            val intent = Intent(this, CrearEvento::class.java)
-//            startActivity(intent)
+            //listar()
+            val intent = Intent(this, CrearEvento::class.java)
+            startActivity(intent)
         }
     }
 

@@ -58,8 +58,8 @@ class CrearEvento : AppCompatActivity() {
             val nombreEvento = binding.eventName.text.toString()
             val fechaEvento = binding.eventDate.text.toString()
             paqueteSeleccionado?.let { paquete ->
-                val userId = auth.currentUser?.uid
-
+               // val userId = auth.currentUser?.uid
+                val userId = "kmds"
                 if (userId != null) {
                     val evento = Evento(userId, nombreEvento, fechaEvento, paquete)
                     val intent = Intent(this@CrearEvento, PreSaveEvento::class.java)
