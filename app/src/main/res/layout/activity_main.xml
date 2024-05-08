@@ -113,7 +113,7 @@
             android:background="@drawable/ic_buttom"
             android:paddingLeft="64dp"
             android:paddingRight="64dp"
-            android:text="PRUEBA"
+            android:text="CREAR CUENTA"
             android:textColor="@color/white" />
     </LinearLayout>
 
