@@ -8,5 +8,5 @@ data class Evento(
     val nombre: String,
     val fecha: String,
     val paquete: Paquete,
-    val invitadosList: List<Invitado> = emptyList()
+    var invitados: List<Invitado> = emptyList()
 ): Parcelable
