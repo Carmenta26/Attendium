@@ -56,6 +56,8 @@ class Pago : AppCompatActivity() {
             ).show()
             calcular()
             println(evento.pagos.toString())
+            findViewById<EditText>(R.id.dateEditText).setText("")
+            findViewById<EditText>(R.id.amountEditText).setText("")
         } else {
             Toast.makeText(
                 baseContext,
