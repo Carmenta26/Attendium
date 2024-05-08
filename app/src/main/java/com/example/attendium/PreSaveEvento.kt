@@ -31,9 +31,6 @@ class PreSaveEvento : AppCompatActivity() {
         editTextCorreo = findViewById(R.id.editTextCorreo)
         containerInvitados = findViewById(R.id.containerInvitados)
 
-
-
-
         // Recuperar el objeto Evento
         evento = intent.getParcelableExtra("evento")!!
 
