@@ -54,6 +54,7 @@ class Pago : AppCompatActivity() {
                 "Pago al evento registrado exitosamente",
                 Toast.LENGTH_SHORT
             ).show()
+            calcular()
             println(evento.pagos.toString())
         } else {
             Toast.makeText(
