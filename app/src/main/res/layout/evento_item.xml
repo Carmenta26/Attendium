@@ -11,51 +11,88 @@
         android:layout_margin="16dp"
         android:background="@drawable/evento_background"
         android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:gravity="center"
             android:id="@+id/nombreEvento1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:text="Nombre del Evento 1"
             android:textColor="@android:color/black"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/paquete"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="16dp"
             android:paddingTop="8dp"
             android:paddingEnd="16dp"
+            android:textStyle="bold"
             android:text="Fecha: 25 de Abril, 2024"
             android:textColor="@android:color/black"
-            android:textSize="14sp" />
-        <TextView
-            android:id="@+id/fecha"
+            android:textSize="16sp" />
+        <!-- Contenedor para fecha con icono -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingTop="8dp"
-            android:paddingEnd="16dp"
-            android:text="Fecha: 25 de Abril, 2024"
-            android:textColor="@android:color/black"
-            android:textSize="14sp" />
-        <TextView
-            android:id="@+id/invitados"
+            android:padding="16dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/calendar_days" />
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="8dp"
+                android:text="Fecha: 25 de Abril, 2024"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Contenedor para invitados con icono -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingTop="8dp"
-            android:paddingEnd="16dp"
-            android:text="Fecha: 25 de Abril, 2024"
-            android:textColor="@android:color/black"
-            android:textSize="14sp" />
+            android:padding="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:gravity="center"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/business_people" />
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/invitados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="8dp"
+                android:text="Invitados: 50"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/botonEvento1"

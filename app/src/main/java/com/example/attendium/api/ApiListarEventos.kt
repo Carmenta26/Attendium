@@ -4,7 +4,7 @@ import com.example.attendium.data.EventoInfo
 import com.google.firebase.database.DataSnapshot
 
 class ApiListarEventos {
-    fun get(snapshot: DataSnapshot ) {
+    fun get(snapshot: DataSnapshot ) :List<EventoInfo> {
         val eventos = mutableListOf<EventoInfo>()
         for (snapshot in snapshot.children) {
             if (snapshot.hasChild("invitados")) {
@@ -17,5 +17,6 @@ class ApiListarEventos {
                 eventos.add(evento)
             }
         }
+        return eventos
     }
 }

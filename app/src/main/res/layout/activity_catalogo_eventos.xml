@@ -19,7 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:title="Catálogo de Eventos"
-            app:titleTextColor="@android:color/white" />
+            android:navigationIcon="@drawable/calendar_days"
+            app:titleTextColor="@android:color/white"
+            />
     </com.google.android.material.appbar.AppBarLayout>
 
     <ListView

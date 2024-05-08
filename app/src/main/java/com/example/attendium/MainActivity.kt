@@ -56,21 +56,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, CrearCuenta::class.java)
             startActivity(intent)
 
-// CODIGO PARA LISTAR EVENTOS
-//            val databaseReference = FirebaseDatabase.getInstance().getReference("eventos")
-//            databaseReference.addValueEventListener(object : ValueEventListener {
-//                override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                    ApiListarEventos().get(dataSnapshot)
-//                }
-//
-//                override fun onCancelled(databaseError: DatabaseError) {
-//                    Log.e(
-//                        "FirebaseDB",
-//                        "Error al leer desde la base de datos",
-//                        databaseError.toException()
-//                    )
-//                }
-//            })
+
         }
 //
 //        signInButton.setOnClickListener {
