@@ -15,7 +15,7 @@ class ApiListarEventos {
                 val nombre = snapshot.child("nombre").value.toString()
                 val fecha = snapshot.child("fecha").value.toString()
                 val invitados = snapshot.child("invitados").childrenCount.toInt()
-                val paquete = snapshot.child("paquete").child("titutlo")
+                val paquete = snapshot.child("paquete").child("titulo")
                     .getValue(String::class.java).toString()
                 val precioPersona =
                     snapshot.child("paquete").child("precio").value.toString().toDouble()

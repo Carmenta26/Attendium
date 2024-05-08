@@ -20,17 +20,36 @@ class Pago : AppCompatActivity() {
         findViewById<Button>(R.id.addButton).setOnClickListener {
             agregar()
         }
+        println(evento.pagos.toString())
     }
 
     fun agregar() {
         val fecha = findViewById<EditText>(R.id.dateEditText).text.toString()
-        val amount = findViewById<EditText>(R.id.amountEditText).text.toString().toDouble()
+        val amountVal = findViewById<EditText>(R.id.amountEditText).text.toString()
+
+
+        if (fecha.isEmpty() || amountVal.isEmpty()) {
+            Toast.makeText(
+                baseContext,
+                "Debe completar todos los campos",
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
+
+        val amount = amountVal.toDouble()
 
         if (permitirAgregar(amount)) {
             val database = Firebase.database
             val ref = database.getReference("/eventos/${evento.id}")
             evento.pagos.add(PagoEvento(amount, fecha))
             ref.child("pagos").setValue(evento.pagos)
+            Toast.makeText(
+                baseContext,
+                "Pago al evento registrado exitosamente",
+                Toast.LENGTH_SHORT
+            ).show()
+            println(evento.pagos.toString())
         } else {
             Toast.makeText(
                 baseContext,
