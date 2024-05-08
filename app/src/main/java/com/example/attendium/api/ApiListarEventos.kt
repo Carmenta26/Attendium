@@ -1,11 +1,13 @@
 package com.example.attendium.api
 
 import com.example.attendium.data.EventoInfo
+import com.example.attendium.data.PagoEvento
 import com.google.firebase.database.DataSnapshot
 
 class ApiListarEventos {
-    fun get(snapshot: DataSnapshot ): MutableList<EventoInfo> {
+    fun get(snapshot: DataSnapshot): MutableList<EventoInfo> {
         val eventos = mutableListOf<EventoInfo>()
+
         for (snapshot in snapshot.children) {
             val id = snapshot.key;
 
@@ -15,7 +17,20 @@ class ApiListarEventos {
                 val invitados = snapshot.child("invitados").childrenCount.toInt()
                 val paquete = snapshot.child("paquete").child("titutlo")
                     .getValue(String::class.java).toString()
-                val evento = EventoInfo(id, nombre, paquete, invitados, fecha, emptyList())
+                val precioPersona =
+                    snapshot.child("paquete").child("precio").value.toString().toDouble()
+
+                val pagos = mutableListOf<PagoEvento>()
+
+                if (snapshot.hasChild("pagos")) {
+                    for (pago in snapshot.child("pagos").children) {
+                        val cantidad: Double = pago.child("cantidad").value.toString().toDouble()
+                        val pagoFecha: String = pago.child("fecha").value.toString()
+                        pagos.add(PagoEvento(cantidad, pagoFecha))
+                    }
+                }
+
+                val evento = EventoInfo(id, nombre, paquete, invitados, fecha, precioPersona, pagos)
                 eventos.add(evento)
             }
         }

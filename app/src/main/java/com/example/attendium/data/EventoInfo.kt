@@ -10,5 +10,6 @@ data class EventoInfo(
     val paquete: String,
     var personas: Int,
     var fecha: String,
-    var pagos: List<PagoEvento>
+    var costoPersona: Double,
+    var pagos: MutableList<PagoEvento>
 ): Parcelable
