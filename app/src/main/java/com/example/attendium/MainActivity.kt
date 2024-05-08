@@ -6,11 +6,17 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
+import com.example.attendium.api.ApiListarEventos
 import com.example.attendium.configs.UserSession
+import com.example.attendium.data.EventoInfo
 import com.example.attendium.databinding.ActivityMainBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -47,9 +53,24 @@ class MainActivity : AppCompatActivity() {
         val createAccout = findViewById<AppCompatButton>(R.id.createAccountButton)
 
         createAccout.setOnClickListener {
-            // Acción al hacer clic en el botón
             val intent = Intent(this, CrearCuenta::class.java)
             startActivity(intent)
+
+// CODIGO PARA LISTAR EVENTOS
+//            val databaseReference = FirebaseDatabase.getInstance().getReference("eventos")
+//            databaseReference.addValueEventListener(object : ValueEventListener {
+//                override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                    ApiListarEventos().get(dataSnapshot)
+//                }
+//
+//                override fun onCancelled(databaseError: DatabaseError) {
+//                    Log.e(
+//                        "FirebaseDB",
+//                        "Error al leer desde la base de datos",
+//                        databaseError.toException()
+//                    )
+//                }
+//            })
         }
 //
 //        signInButton.setOnClickListener {
@@ -71,6 +92,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
                 }
             }
+
     }
 
     private fun reaload() {

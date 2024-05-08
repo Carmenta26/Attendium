@@ -3,8 +3,9 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Invitado(
+data class EventoInfo(
     val nombre: String,
-    val telefono: String,
-    val correo: String
+    val paquete: String,
+    var personas: Int,
+    var fecha: String,
 ): Parcelable
