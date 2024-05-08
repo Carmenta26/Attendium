@@ -30,28 +30,28 @@
 
         <TextView
             android:id="@+id/paquete"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:paddingStart="16dp"
             android:paddingTop="8dp"
             android:paddingEnd="16dp"
-            android:textStyle="bold"
             android:text="Fecha: 25 de Abril, 2024"
             android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
         <!-- Contenedor para fecha con icono -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
+            android:padding="8dp"
             android:layout_gravity="center"
             android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_horizontal">
 
             <ImageView
                 android:layout_gravity="center"
-                android:layout_width="24dp"
+                android:layout_width="30dp"
                 android:layout_height="24dp"
                 android:src="@drawable/calendar_days" />
 
@@ -63,36 +63,39 @@
                 android:paddingStart="8dp"
                 android:text="Fecha: 25 de Abril, 2024"
                 android:textColor="@android:color/black"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <!-- Contenedor para invitados con icono -->
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
+            android:gravity="center"
             android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:padding="8dp">
 
             <ImageView
-                android:gravity="center"
-                android:layout_width="24dp"
+                android:layout_width="30dp"
                 android:layout_height="24dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
                 android:src="@drawable/business_people" />
 
             <TextView
-                android:gravity="center"
                 android:id="@+id/invitados"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
                 android:paddingStart="8dp"
                 android:text="Invitados: 50"
                 android:textColor="@android:color/black"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
-
 
         <Button
             android:id="@+id/botonEvento1"

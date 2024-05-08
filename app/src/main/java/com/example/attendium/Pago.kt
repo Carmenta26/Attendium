@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import com.example.attendium.data.EventoInfo
 import com.google.firebase.Firebase
 import com.google.firebase.database.database
 
@@ -14,6 +15,12 @@ class Pago : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pago)
+
+        // Obteniendo el evento desde el Intent
+        val evento = intent.getParcelableExtra<EventoInfo>("evento_info")
+        println(evento.toString())
+
+
         findViewById<Button>(R.id.addButton).setOnClickListener {
             agregar()
         }

@@ -1,12 +1,14 @@
 package com.example.attendium.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.TextView
+import com.example.attendium.Pago
 import com.example.attendium.R
 import com.example.attendium.data.EventoInfo
 
@@ -27,9 +29,11 @@ class EventoAdapter(private val context: Context, private val eventos: List<Even
         view.findViewById<TextView>(R.id.fecha).text = evento.fecha
         view.findViewById<TextView>(R.id.invitados).text = "Invitados: ${evento.personas}"
 
-        // Aquí podrías agregar el listener al botón si es necesario
+
         view.findViewById<Button>(R.id.botonEvento1).setOnClickListener {
-            // Acción al presionar el botón de detalles
+            val intent = Intent(context, Pago::class.java)
+            intent.putExtra("evento_info", evento)  // 'evento' es el objeto EventoInfo actual
+            context.startActivity(intent)
         }
 
         return view

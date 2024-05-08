@@ -1,5 +1,9 @@
 package com.example.attendium.data
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class EventoInfo(
     val id: String,
     val nombre: String,
@@ -7,4 +11,4 @@ data class EventoInfo(
     var personas: Int,
     var fecha: String,
     var pagos: List<PagoEvento>
-)
+): Parcelable
