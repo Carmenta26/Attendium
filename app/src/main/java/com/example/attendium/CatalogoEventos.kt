@@ -12,6 +12,7 @@ import com.example.attendium.api.ApiListarEventos
 import com.example.attendium.configs.UserSession
 import com.example.attendium.data.Evento
 import com.example.attendium.data.EventoInfo
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -34,19 +35,15 @@ class CatalogoEventos : AppCompatActivity() {
 
         supportActionBar?.setHomeAsUpIndicator(R.drawable.calendar_days) // Para asegurarse que el ícono es visible
         val listView = findViewById<ListView>(R.id.listview_eventos)
-        val btnIrADetalles = findViewById<Button>(R.id.agregarEventoButton)
-        val toPago = findViewById<Button>(R.id.pago)
+        val btnIrADetalles = findViewById<FloatingActionButton>(R.id.agregarEventoButton)
+
 
         btnIrADetalles.setOnClickListener {
 
             val intent = Intent(this, CrearEvento::class.java)
             startActivity(intent)
         }
-        toPago.setOnClickListener {
 
-            val intent = Intent(this, Pago::class.java)
-            startActivity(intent)
-        }
 
 
         // PARA LISTAR EVENTOS
