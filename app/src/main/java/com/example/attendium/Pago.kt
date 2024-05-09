@@ -1,5 +1,6 @@
 package com.example.attendium
 
+import android.content.Intent
 import com.example.attendium.data.PagoEvento
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -25,6 +26,7 @@ class Pago : AppCompatActivity() {
     private lateinit var pagadoTextView: TextView
     private lateinit var restanteTextView: TextView
     private lateinit var cantidad: EditText
+    private lateinit var regresarButton : Button
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: AdapterTablePagos
     private lateinit var pagosList: MutableList<PagoEvento>
@@ -38,6 +40,12 @@ class Pago : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerViewPagos)
         fecha = findViewById(R.id.dateEditText)
         cantidad = findViewById(R.id.amountEditText)
+        regresarButton =findViewById(R.id.regresar)
+
+        regresarButton.setOnClickListener {
+            val intent = Intent(this, CatalogoEventos::class.java)
+            startActivity(intent)
+        }
 
         evento = intent.getParcelableExtra("evento_info")!!
         // Inicializar pagosList
