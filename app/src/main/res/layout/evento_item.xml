@@ -10,18 +10,18 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:background="@drawable/evento_background"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:gravity="center"
             android:id="@+id/nombreEvento1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:padding="16dp"
             android:text="Nombre del Evento 1"
             android:textColor="@android:color/black"
@@ -37,29 +37,28 @@
             android:paddingTop="8dp"
             android:paddingEnd="16dp"
             android:text="Fecha: 25 de Abril, 2024"
-            android:textColor="@android:color/black"
+            android:textColor="@color/blue"
             android:textSize="16sp"
             android:textStyle="bold" />
         <!-- Contenedor para fecha con icono -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:layout_gravity="center"
+            android:gravity="center"
             android:orientation="horizontal"
-            android:gravity="center_horizontal">
+            android:padding="8dp">
 
             <ImageView
-                android:layout_gravity="center"
                 android:layout_width="30dp"
                 android:layout_height="24dp"
+                android:layout_gravity="center"
                 android:src="@drawable/calendar_days" />
 
             <TextView
-                android:gravity="center"
                 android:id="@+id/fecha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:paddingStart="8dp"
                 android:text="Fecha: 25 de Abril, 2024"
                 android:textColor="@android:color/black"
@@ -103,8 +102,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:background="@color/black"
-            android:text="Detalles"
-            android:textColor="@android:color/white" />
+            android:text="Administrar pagos"
+            android:textColor="@android:color/white"
+            app:icon="@drawable/dinero"
+            app:iconSize="30dp"
+            app:iconGravity="textStart"
+            app:iconPadding="10dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
