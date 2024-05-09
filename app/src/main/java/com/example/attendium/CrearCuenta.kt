@@ -1,5 +1,6 @@
 package com.example.attendium
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -9,11 +10,18 @@ import com.google.firebase.auth.FirebaseAuth
 
 class CrearCuenta : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
-
+    private lateinit var crearButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
         setContentView(R.layout.activity_crear_cuenta)
+
+        crearButton.findViewById<Button>(R.id.alreadyHaveAccountButton)
+        crearButton.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         findViewById<Button>(R.id.createAccountButton).setOnClickListener {
             crearCuenta()
         }
@@ -33,6 +41,8 @@ class CrearCuenta : AppCompatActivity() {
                 if (task.isSuccessful) {
                     Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
                     val user = auth.currentUser
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
                 } else {
                     Toast.makeText(
                         baseContext, "Error al registrar usuario. Por favor, intente nuevamente.",

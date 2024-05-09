@@ -101,7 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:background="@color/black"
+            android:background="@drawable/ic_buttom"
             android:text="Administrar pagos"
             android:textColor="@android:color/white"
             app:icon="@drawable/dinero"

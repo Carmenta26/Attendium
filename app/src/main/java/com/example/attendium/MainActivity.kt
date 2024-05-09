@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        val createAccout = findViewById<AppCompatButton>(R.id.createAccountButton)
+        val createAccout = findViewById<AppCompatButton>(R.id.createAccount)
 
         createAccout.setOnClickListener {
             val intent = Intent(this, CrearCuenta::class.java)

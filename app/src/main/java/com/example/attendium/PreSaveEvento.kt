@@ -5,8 +5,10 @@ import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -111,74 +113,34 @@ class PreSaveEvento : AppCompatActivity() {
     }
 
     private fun agregarInvitadoAUI(invitado: Invitado) {
-        val invitadoView = LinearLayout(this).apply {
-            orientation = LinearLayout.HORIZONTAL
-            layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            )
-            setPadding(16, 8, 16, 8)
+        // Inflar el layout desde XML
+        val inflater = LayoutInflater.from(this)
+        val invitadoView = inflater.inflate(R.layout.item_invitado, containerInvitados, false)
+
+        // Configurar los TextViews con la información del invitado
+        val textViewNombre: TextView = invitadoView.findViewById(R.id.textViewNombre)
+        textViewNombre.text = invitado.nombre
+
+        val textViewTelefono: TextView = invitadoView.findViewById(R.id.textViewTelefono)
+        textViewTelefono.text = invitado.telefono
+
+        val textViewCorreo: TextView = invitadoView.findViewById(R.id.textViewCorreo)
+        textViewCorreo.text = invitado.correo
+
+        // Configurar el botón para eliminar el invitado de la UI
+        val buttonEliminar: ImageButton = invitadoView.findViewById(R.id.buttonEliminar)
+        buttonEliminar.setOnClickListener {
+            containerInvitados.removeView(invitadoView)  // Eliminar la vista del layout
+            listaInvitados.remove(invitado)  // Suponiendo que tengas una lista de invitados
+            actualizarInformacionEvento()  // Actualizar la información necesaria
         }
 
-        val textViewNombre = TextView(this).apply {
-            text = invitado.nombre
-            layoutParams =
-                LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f)
-        }
-
-        val textViewTelefono = TextView(this).apply {
-            text = invitado.telefono
-            layoutParams =
-                LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f)
-        }
-
-        val textViewCorreo = TextView(this).apply {
-            text = invitado.correo
-            layoutParams =
-                LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f)
-        }
-
-        val buttonRemove = Button(this).apply {
-            text = "-"
-            textSize = 30f // Establece el tamaño del texto
-            setTypeface(typeface, Typeface.BOLD) // Establece el texto en negrita
-            setTextColor(
-                ContextCompat.getColor(
-                    context,
-                    R.color.white
-                )
-            ) // Establece el color del texto a blanco
-
-            // Configurar el fondo del botón a negro
-            setBackgroundColor(ContextCompat.getColor(context, R.color.black))
-
-            layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            ).apply {
-                // Aquí puedes añadir márgenes si es necesario
-                setMargins(16, 16, 16, 16)
-            }
-
-            setOnClickListener {
-                // Acción del botón, por ejemplo, remover una vista
-                // Suponiendo que estas variables estén correctamente definidas y sean accesibles
-                containerInvitados.removeView(invitadoView)
-                listaInvitados.remove(invitado)
-                actualizarInformacionEvento()  // Actualiza la información del evento tras eliminar un invitado
-            }
-        }
-
-
-        // Añadir los TextViews y el botón al LinearLayout
-        invitadoView.addView(textViewNombre)
-        invitadoView.addView(textViewTelefono)
-        invitadoView.addView(textViewCorreo)
-        invitadoView.addView(buttonRemove)
-
-        // Añadir el LinearLayout al contenedor principal
+        // Añadir la vista inflada al contenedor en la UI
         containerInvitados.addView(invitadoView)
     }
+
+
+
 
     fun validarCorreo(correo: String): Boolean {
         val patronCorreo = Regex("^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,})+\$")

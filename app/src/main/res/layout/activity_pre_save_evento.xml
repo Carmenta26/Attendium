@@ -28,7 +28,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:background="@android:drawable/edit_text"
+        android:padding="16dp"
+        android:background="@drawable/ic_field"
         android:hint="Nombre" />
 
     <EditText
@@ -37,7 +38,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:inputType="number"
-        android:background="@android:drawable/edit_text"
+        android:maxLength="10"
+        android:padding="16dp"
+        android:background="@drawable/ic_field"
         android:hint="Teléfono" />
 
     <EditText
@@ -45,8 +48,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:background="@android:drawable/edit_text"
+        android:background="@drawable/ic_field"
         android:hint="Correo"
+        android:padding="16dp"
         android:inputType="textEmailAddress" />
 
     <Button
@@ -54,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:background="@android:color/black"
+        android:background="@drawable/ic_buttom"
         android:text="Agregar +"
         android:textColor="@android:color/white" />
 
@@ -68,6 +72,51 @@
 
     <!-- Lista de invitados -->
     <!-- Repetir este LinearLayout para cada invitado -->
+    <LinearLayout
+        android:id="@+id/cabeceras"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="left"
+            android:text="Nombre"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Teléfono"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="Correo"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text=""
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="199dp">
@@ -79,10 +128,6 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Ejemplo de fila para un invitado, repite esto para cada invitado -->
-
-
-            <!-- Puedes agregar más LinearLayouts como este para cada nuevo invitado -->
         </LinearLayout>
     </ScrollView>
 
@@ -93,6 +138,8 @@
         android:text="Precio final"
         android:textSize="24sp"
         android:textStyle="bold" />
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -105,6 +152,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
+            android:textSize="16dp"
             android:text="3 personas" />
 
         <TextView
@@ -112,6 +160,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
+            android:textSize="16dp"
             android:text="$1,500.00 MXN" />
     </LinearLayout>
 
@@ -119,7 +168,7 @@
         android:id="@+id/crearEvento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/black"
+        android:background="@drawable/ic_buttom"
         android:text="Crear evento ✔️"
         android:textColor="@android:color/white" />
 </LinearLayout>
