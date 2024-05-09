@@ -58,19 +58,27 @@ class PreSaveEvento : AppCompatActivity() {
             println(evento.nombre)
             if (nombre.isNotBlank() && telefono.isNotBlank() && correo.isNotBlank()) {
                 // Crear un nuevo invitado y añadirlo a la lista
-                val nuevoInvitado = Invitado(nombre, telefono, correo)
-                listaInvitados.add(nuevoInvitado)
-                agregarInvitadoAUI(nuevoInvitado)
 
-                actualizarInformacionEvento()
+                if(validarCorreo(correo)){
+                    val nuevoInvitado = Invitado(nombre, telefono, correo)
+                    listaInvitados.add(nuevoInvitado)
+                    agregarInvitadoAUI(nuevoInvitado)
 
-                precioFinal = listaInvitados.size * eventoRecuperado.paquete.precio
-                println("Este es el nuevo precio del evento " + precioFinal)
+                    actualizarInformacionEvento()
 
-                // Limpiar campos después de agregar
-                editTextNombre.text.clear()
-                editTextTelefono.text.clear()
-                editTextCorreo.text.clear()
+                    precioFinal = listaInvitados.size * eventoRecuperado.paquete.precio
+                    println("Este es el nuevo precio del evento " + precioFinal)
+
+                    // Limpiar campos después de agregar
+                    editTextNombre.text.clear()
+                    editTextTelefono.text.clear()
+                    editTextCorreo.text.clear()
+                } else {
+                    Toast.makeText(this, "El formato del correo no es correcto.", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+
             } else {
                 Toast.makeText(this, "Por favor, complete todos los campos.", Toast.LENGTH_SHORT)
                     .show()
@@ -171,6 +179,12 @@ class PreSaveEvento : AppCompatActivity() {
         // Añadir el LinearLayout al contenedor principal
         containerInvitados.addView(invitadoView)
     }
+
+    fun validarCorreo(correo: String): Boolean {
+        val patronCorreo = Regex("^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,})+\$")
+        return patronCorreo.matches(correo)
+    }
+
 
 }
 
