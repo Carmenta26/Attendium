@@ -107,32 +107,33 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/cabeceras"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:id="@+id/cabeceras"
         android:textColor="@color/white"
         app:layout_constraintTop_toBottomOf="@id/viewSeparadorpagos">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:gravity="left"
             android:text="Fecha"
-            android:layout_marginLeft="20dp"                android:textSize="16sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
             android:layout_weight="1"
             android:gravity="left"
-            android:layout_marginLeft="80dp"
-            android:textSize="16sp"
             android:text="Cantidad"
+            android:textSize="16sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -152,7 +153,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/totalTextView"
+        app:layout_constraintBottom_toTopOf="@id/primerFila"
         app:layout_constraintTop_toBottomOf="@id/recyclerViewPagos">
 
         <TextView
@@ -176,31 +177,113 @@
             android:background="@color/black" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/totalTextView"
-        android:layout_width="wrap_content"
+    <!-- outer_layout.xml -->
+
+
+    <!-- Fila para Total -->
+    <LinearLayout
+        android:id="@+id/primerFila"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Total: $300.00 MXN"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewSeparador" />
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/viewSeparador">
 
-    <TextView
-        android:id="@+id/paidTextView"
-        android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:gravity="left"
+            android:text="Total:" />
+
+        <TextView
+            android:id="@+id/totalTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:gravity="right"
+            android:textStyle="bold"
+            android:text="$300.00 MXN" />
+    </LinearLayout>
+
+    <!-- Fila para Pagado -->
+    <LinearLayout
+        android:id="@+id/segundaFila"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Pagado: $200.00 MXN"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/totalTextView" />
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/primerFila">
 
-    <TextView
-        android:id="@+id/remainingTextView"
-        android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:textSize="18sp"
+            android:text="Pagado:" />
+
+        <TextView
+            android:id="@+id/paidTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:gravity="right"
+            android:text="$200.00 MXN" />
+    </LinearLayout>
+
+    <!-- Fila para Restante -->
+    <LinearLayout
+        android:id="@+id/fila3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Restante: $100.00 MXN"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/segundaFila">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:gravity="left"
+            android:text="Restante:" />
+
+        <TextView
+            android:id="@+id/remainingTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:gravity="right"
+            android:text="$100.00 MXN" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/regresar"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/ic_buttom"
+        android:text="Regresar al inicio"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/paidTextView" />
+        app:layout_constraintTop_toBottomOf="@id/fila3" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

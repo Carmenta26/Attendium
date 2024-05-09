@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +21,9 @@ class Pago : AppCompatActivity() {
     private var pendiente: Double = 0.00
     private var pagado: Double = 0.00
     private lateinit var fecha: EditText
+    private lateinit var totalTextview: TextView
+    private lateinit var pagadoTextView: TextView
+    private lateinit var restanteTextView: TextView
     private lateinit var cantidad: EditText
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: AdapterTablePagos
@@ -28,6 +32,9 @@ class Pago : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pago)
 
+        totalTextview = findViewById(R.id.totalTextView)
+        pagadoTextView = findViewById(R.id.paidTextView)
+        restanteTextView = findViewById(R.id.remainingTextView)
         recyclerView = findViewById(R.id.recyclerViewPagos)
         fecha = findViewById(R.id.dateEditText)
         cantidad = findViewById(R.id.amountEditText)
@@ -44,7 +51,9 @@ class Pago : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-
+        totalTextview.setText(total.toString())
+        pagadoTextView.setText(pagado.toString())
+        restanteTextView.setText(pendiente.toString())
 
 
         findViewById<Button>(R.id.addButton).setOnClickListener {
@@ -58,7 +67,6 @@ class Pago : AppCompatActivity() {
     fun agregar() {
         val fechaText = fecha.text.toString()
         val amountVal = cantidad.text.toString()
-        //pagosList.add(PagoEvento(amountVal.toDouble(),fechaText))
         val pagoEvento = PagoEvento(amountVal.toDouble(), fechaText)
 
         calcular()
@@ -112,10 +120,14 @@ class Pago : AppCompatActivity() {
             pagado += pago.cantidad
         }
         pendiente = total - pagado
+        totalTextview.setText(total.toString())
+        pagadoTextView.setText(pagado.toString())
+        restanteTextView.setText(pendiente.toString())
         imprimir()
     }
 
     fun imprimir() {
+
         println("TOTAL: " + total)
         println("PAGADO: " + pagado)
         println("PENDIENTE: " + pendiente)
