@@ -19,8 +19,8 @@ class Pago : AppCompatActivity() {
     private var total: Double = 0.00
     private var pendiente: Double = 0.00
     private var pagado: Double = 0.00
-    private lateinit var fecha : EditText
-    private lateinit var cantidad:EditText
+    private lateinit var fecha: EditText
+    private lateinit var cantidad: EditText
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: AdapterTablePagos
     private lateinit var pagosList: MutableList<PagoEvento>
@@ -32,7 +32,7 @@ class Pago : AppCompatActivity() {
         fecha = findViewById(R.id.dateEditText)
         cantidad = findViewById(R.id.amountEditText)
 
-
+        evento = intent.getParcelableExtra("evento_info")!!
         // Inicializar pagosList
         if (evento.pagos != null) {
             pagosList = evento.pagos
