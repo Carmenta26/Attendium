@@ -10,7 +10,8 @@
         android:id="@+id/textViewDate"
         android:layout_width="0dp"
         android:textSize="14sp"
-        android:gravity="center_horizontal"
+        android:gravity="left"
+        android:layout_marginLeft="20dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
 
@@ -18,7 +19,8 @@
         android:id="@+id/textViewAmount"
         android:layout_width="0dp"
         android:textSize="14sp"
-        android:gravity="center_horizontal"
+        android:gravity="left"
+        android:layout_marginLeft="100dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
 </LinearLayout>

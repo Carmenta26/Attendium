@@ -60,7 +60,7 @@ class Pago : AppCompatActivity() {
         val amountVal = cantidad.text.toString()
         //pagosList.add(PagoEvento(amountVal.toDouble(),fechaText))
         val pagoEvento = PagoEvento(amountVal.toDouble(), fechaText)
-        adapter.addItem(pagoEvento)
+
         calcular()
 
         fecha.text.clear()
@@ -87,6 +87,7 @@ class Pago : AppCompatActivity() {
                 "Pago al evento registrado exitosamente",
                 Toast.LENGTH_SHORT
             ).show()
+            adapter.addItem(pagoEvento)
             calcular()
             println(evento.pagos.toString())
             findViewById<EditText>(R.id.dateEditText).setText("")
