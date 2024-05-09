@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
 
@@ -105,32 +106,60 @@
             android:background="@color/black" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/listviewPagos"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:id="@+id/cabeceras"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/viewSeparadorpagos">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Fecha"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:text="Cantidad"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPagos"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_weight="1"
         app:layout_constraintBottom_toTopOf="@id/viewSeparador"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewSeparadorpagos" />
+        app:layout_constraintTop_toBottomOf="@id/cabeceras" />
+
 
     <LinearLayout
         android:id="@+id/viewSeparador"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="468dp"
         android:orientation="horizontal"
-
-
         app:layout_constraintBottom_toTopOf="@id/totalTextView"
-        app:layout_constraintTop_toBottomOf="@id/listviewPagos">
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewPagos">
 
         <TextView
             android:id="@+id/view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
+
             android:text="Totalización"
             android:textAllCaps="true"
             android:textColor="@color/black"
@@ -141,7 +170,7 @@
             android:layout_width="0dp"
             android:layout_height="2dp"
             android:layout_marginHorizontal="15dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="15dp"
             android:layout_weight="1"
             android:background="@color/black" />
     </LinearLayout>
@@ -150,7 +179,7 @@
         android:id="@+id/totalTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:text="Total: $300.00 MXN"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewSeparador" />

@@ -39,7 +39,6 @@ class CatalogoEventos : AppCompatActivity() {
 
 
         btnIrADetalles.setOnClickListener {
-
             val intent = Intent(this, CrearEvento::class.java)
             startActivity(intent)
         }

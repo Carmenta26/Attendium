@@ -3,9 +3,13 @@ package com.example.attendium
 import com.example.attendium.data.PagoEvento
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.attendium.adapters.AdapterTablePagos
 import com.example.attendium.data.EventoInfo
 import com.google.firebase.Firebase
 import com.google.firebase.database.database
@@ -15,11 +19,34 @@ class Pago : AppCompatActivity() {
     private var total: Double = 0.00
     private var pendiente: Double = 0.00
     private var pagado: Double = 0.00
-
+    private lateinit var fecha : EditText
+    private lateinit var cantidad:EditText
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: AdapterTablePagos
+    private lateinit var pagosList: MutableList<PagoEvento>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pago)
-        evento = intent.getParcelableExtra<EventoInfo>("evento_info")!!
+
+        recyclerView = findViewById(R.id.recyclerViewPagos)
+        fecha = findViewById(R.id.dateEditText)
+        cantidad = findViewById(R.id.amountEditText)
+
+
+        // Inicializar pagosList
+        if (evento.pagos != null) {
+            pagosList = evento.pagos
+        } else {
+            pagosList = mutableListOf()
+            Log.e("PagoActivity", "No pagos")
+        }
+        adapter = AdapterTablePagos(pagosList)
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+
+
+
         findViewById<Button>(R.id.addButton).setOnClickListener {
             agregar()
         }
@@ -29,11 +56,17 @@ class Pago : AppCompatActivity() {
     }
 
     fun agregar() {
-        val fecha = findViewById<EditText>(R.id.dateEditText).text.toString()
-        val amountVal = findViewById<EditText>(R.id.amountEditText).text.toString()
+        val fechaText = fecha.text.toString()
+        val amountVal = cantidad.text.toString()
+        //pagosList.add(PagoEvento(amountVal.toDouble(),fechaText))
+        val pagoEvento = PagoEvento(amountVal.toDouble(), fechaText)
+        adapter.addItem(pagoEvento)
         calcular()
 
-        if (fecha.isEmpty() || amountVal.isEmpty()) {
+        fecha.text.clear()
+        cantidad.text.clear()
+
+        if (fechaText.isEmpty() || amountVal.isEmpty()) {
             Toast.makeText(
                 baseContext,
                 "Debe completar todos los campos",
@@ -47,7 +80,7 @@ class Pago : AppCompatActivity() {
         if (permitirAgregar(amount)) {
             val database = Firebase.database
             val ref = database.getReference("/eventos/${evento.id}")
-            evento.pagos.add(PagoEvento(amount, fecha))
+            evento.pagos.add(PagoEvento(amount, fechaText))
             ref.child("pagos").setValue(evento.pagos)
             Toast.makeText(
                 baseContext,
