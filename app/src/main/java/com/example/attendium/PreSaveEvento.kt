@@ -21,7 +21,7 @@ class PreSaveEvento : AppCompatActivity() {
     private lateinit var editTextTelefono: EditText
     private lateinit var editTextCorreo: EditText
     private lateinit var containerInvitados: LinearLayout
-    private lateinit var crearEventoButton : Button
+    private lateinit var crearEventoButton: Button
 
     // Lista para almacenar los invitados
     private val listaInvitados = mutableListOf<Invitado>()
@@ -65,32 +65,34 @@ class PreSaveEvento : AppCompatActivity() {
                 actualizarInformacionEvento()
 
                 precioFinal = listaInvitados.size * eventoRecuperado.paquete.precio
-                println("Este es el nuevo precio del evento "+ precioFinal)
+                println("Este es el nuevo precio del evento " + precioFinal)
 
                 // Limpiar campos después de agregar
                 editTextNombre.text.clear()
                 editTextTelefono.text.clear()
                 editTextCorreo.text.clear()
             } else {
-                Toast.makeText(this, "Por favor, complete todos los campos.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Por favor, complete todos los campos.", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
 
         crearEventoButton.setOnClickListener {
-            if (listaInvitados.isEmpty()) {
-                Toast.makeText(this, "Por favor, añada al menos un invitado.", Toast.LENGTH_LONG).show()
-            } else {
-                // Añade la lista de invitados al evento
-                evento.invitados = listaInvitados
-                val intent = Intent(this, CatalogoEventos::class.java)
-                startActivity(intent)
-                val api = ApiCrearEvento()
-                api.crear(evento)
-
-            }
+            crearEvento()
         }
     }
 
+    fun crearEvento() {
+        if (listaInvitados.isEmpty()) {
+            Toast.makeText(this, "Por favor, añada al menos un invitado.", Toast.LENGTH_LONG).show()
+        } else {
+            evento.invitados = listaInvitados
+            val intent = Intent(this, CatalogoEventos::class.java)
+            startActivity(intent)
+            val api = ApiCrearEvento()
+            api.crear(evento)
+        }
+    }
 
     private fun actualizarInformacionEvento() {
         val numeroPersonas = listaInvitados.size
@@ -107,29 +109,37 @@ class PreSaveEvento : AppCompatActivity() {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             )
-            setPadding(16, 8, 16, 8) // Ajuste de padding si es necesario
+            setPadding(16, 8, 16, 8)
         }
 
         val textViewNombre = TextView(this).apply {
             text = invitado.nombre
-            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f)
+            layoutParams =
+                LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f)
         }
 
         val textViewTelefono = TextView(this).apply {
             text = invitado.telefono
-            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f)
+            layoutParams =
+                LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f)
         }
 
         val textViewCorreo = TextView(this).apply {
             text = invitado.correo
-            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f)
+            layoutParams =
+                LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f)
         }
 
         val buttonRemove = Button(this).apply {
             text = "-"
             textSize = 30f // Establece el tamaño del texto
             setTypeface(typeface, Typeface.BOLD) // Establece el texto en negrita
-            setTextColor(ContextCompat.getColor(context, R.color.white)) // Establece el color del texto a blanco
+            setTextColor(
+                ContextCompat.getColor(
+                    context,
+                    R.color.white
+                )
+            ) // Establece el color del texto a blanco
 
             // Configurar el fondo del botón a negro
             setBackgroundColor(ContextCompat.getColor(context, R.color.black))
@@ -150,7 +160,6 @@ class PreSaveEvento : AppCompatActivity() {
                 actualizarInformacionEvento()  // Actualiza la información del evento tras eliminar un invitado
             }
         }
-
 
 
         // Añadir los TextViews y el botón al LinearLayout
