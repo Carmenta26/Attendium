@@ -88,7 +88,7 @@ class Pago : AppCompatActivity() {
         if (permitirAgregar(amount)) {
             val database = Firebase.database
             val ref = database.getReference("/eventos/${evento.id}")
-            evento.pagos.add(PagoEvento(amount, fechaText))
+//            evento.pagos.add(PagoEvento(amount, fechaText))
             ref.child("pagos").setValue(evento.pagos)
             Toast.makeText(
                 baseContext,
