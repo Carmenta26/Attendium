@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.EditText
 import android.widget.Toast
 import com.example.attendium.adapters.AdapterPackage
 import com.example.attendium.configs.UserSession
@@ -11,6 +12,9 @@ import com.example.attendium.data.Evento
 import com.example.attendium.data.Paquete
 import com.example.attendium.databinding.ActivityCrearEventoBinding
 import com.google.firebase.auth.FirebaseAuth
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class CrearEvento : AppCompatActivity() {
     private lateinit var binding: ActivityCrearEventoBinding
@@ -40,6 +44,12 @@ class CrearEvento : AppCompatActivity() {
             )
             // Puedes añadir más paquetes aquí
         )
+
+
+        val fechaActual = Date()
+        val formatoFecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val fechaFormateada = formatoFecha.format(fechaActual)
+        findViewById<EditText>(R.id.eventDate).setText(fechaFormateada)
 
         Log.d("CrearEvento", "Número de paquetes: ${paquetes.size}")
         paquetes.forEach { paquete ->

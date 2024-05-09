@@ -15,6 +15,9 @@ import com.example.attendium.adapters.AdapterTablePagos
 import com.example.attendium.data.EventoInfo
 import com.google.firebase.Firebase
 import com.google.firebase.database.database
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class Pago : AppCompatActivity() {
     private lateinit var evento: EventoInfo
@@ -66,6 +69,10 @@ class Pago : AppCompatActivity() {
         pagadoTextView.setText(pagado.toString())
         restanteTextView.setText(pendiente.toString())
 
+        val fechaActual = Date()
+        val formatoFecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val fechaFormateada = formatoFecha.format(fechaActual)
+        findViewById<EditText>(R.id.dateEditText).setText(fechaFormateada)
 
         findViewById<Button>(R.id.addButton).setOnClickListener {
             agregar()
@@ -105,7 +112,6 @@ class Pago : AppCompatActivity() {
                 "Pago al evento registrado exitosamente",
                 Toast.LENGTH_SHORT
             ).show()
-            findViewById<EditText>(R.id.dateEditText).setText("")
             findViewById<EditText>(R.id.amountEditText).setText("")
         } else {
             Toast.makeText(
