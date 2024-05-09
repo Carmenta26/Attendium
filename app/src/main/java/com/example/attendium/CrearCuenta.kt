@@ -10,14 +10,14 @@ import com.google.firebase.auth.FirebaseAuth
 
 class CrearCuenta : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
-    private lateinit var crearButton: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
         setContentView(R.layout.activity_crear_cuenta)
 
-        crearButton.findViewById<Button>(R.id.alreadyHaveAccountButton)
-        crearButton.setOnClickListener{
+        val crearButton: Button = findViewById(R.id.alreadyHaveAccountButton)
+        crearButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
