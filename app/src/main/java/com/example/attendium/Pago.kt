@@ -25,6 +25,7 @@ class Pago : AppCompatActivity() {
     private lateinit var totalTextview: TextView
     private lateinit var pagadoTextView: TextView
     private lateinit var restanteTextView: TextView
+    private lateinit var titleTextView: TextView
     private lateinit var cantidad: EditText
     private lateinit var regresarButton : Button
     private lateinit var recyclerView: RecyclerView
@@ -41,13 +42,17 @@ class Pago : AppCompatActivity() {
         fecha = findViewById(R.id.dateEditText)
         cantidad = findViewById(R.id.amountEditText)
         regresarButton =findViewById(R.id.regresar)
+        titleTextView = findViewById(R.id.eventNameTextView)
 
         regresarButton.setOnClickListener {
             val intent = Intent(this, CatalogoEventos::class.java)
             startActivity(intent)
         }
 
+
         evento = intent.getParcelableExtra("evento_info")!!
+
+        titleTextView.setText("Evento - "+evento.nombre)
         // Inicializar pagosList
         if (evento.pagos != null) {
             pagosList = evento.pagos
