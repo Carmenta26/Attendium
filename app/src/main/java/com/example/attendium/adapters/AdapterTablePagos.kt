@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.attendium.R
 import com.example.attendium.data.PagoEvento
 
-class AdapterTablePagos(private var items: MutableList<PagoEvento>) : RecyclerView.Adapter<AdapterTablePagos.ViewHolder>() {
+class AdapterTablePagos(private var items: MutableList<PagoEvento>) :
+    RecyclerView.Adapter<AdapterTablePagos.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var date: TextView = itemView.findViewById(R.id.textViewDate)
@@ -16,7 +17,8 @@ class AdapterTablePagos(private var items: MutableList<PagoEvento>) : RecyclerVi
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_pago, parent, false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_pago, parent, false)
         return ViewHolder(itemView)
     }
 
@@ -28,8 +30,7 @@ class AdapterTablePagos(private var items: MutableList<PagoEvento>) : RecyclerVi
 
     override fun getItemCount() = items.size
 
-    fun addItem(item: PagoEvento) {
-        items.add(item)
-        notifyItemInserted(items.size - 1)
+    fun addItem() {
+        notifyItemInserted(items.count() - 1)
     }
 }

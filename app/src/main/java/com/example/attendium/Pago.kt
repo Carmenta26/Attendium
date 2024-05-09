@@ -26,7 +26,7 @@ class Pago : AppCompatActivity() {
     private lateinit var pagadoTextView: TextView
     private lateinit var restanteTextView: TextView
     private lateinit var cantidad: EditText
-    private lateinit var regresarButton : Button
+    private lateinit var regresarButton: Button
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: AdapterTablePagos
     private lateinit var pagosList: MutableList<PagoEvento>
@@ -40,7 +40,7 @@ class Pago : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerViewPagos)
         fecha = findViewById(R.id.dateEditText)
         cantidad = findViewById(R.id.amountEditText)
-        regresarButton =findViewById(R.id.regresar)
+        regresarButton = findViewById(R.id.regresar)
 
         regresarButton.setOnClickListener {
             val intent = Intent(this, CatalogoEventos::class.java)
@@ -75,12 +75,6 @@ class Pago : AppCompatActivity() {
     fun agregar() {
         val fechaText = fecha.text.toString()
         val amountVal = cantidad.text.toString()
-        val pagoEvento = PagoEvento(amountVal.toDouble(), fechaText)
-
-        calcular()
-
-        fecha.text.clear()
-        cantidad.text.clear()
 
         if (fechaText.isEmpty() || amountVal.isEmpty()) {
             Toast.makeText(
@@ -91,27 +85,29 @@ class Pago : AppCompatActivity() {
             return
         }
 
+        val pagoEvento = PagoEvento(amountVal.toDouble(), fechaText)
+        calcular()
+
         val amount = amountVal.toDouble()
 
         if (permitirAgregar(amount)) {
             val database = Firebase.database
             val ref = database.getReference("/eventos/${evento.id}")
-//            evento.pagos.add(PagoEvento(amount, fechaText))
+            evento.pagos.add(PagoEvento(amount, fechaText))
             ref.child("pagos").setValue(evento.pagos)
+            adapter.addItem()
+            calcular()
             Toast.makeText(
                 baseContext,
                 "Pago al evento registrado exitosamente",
                 Toast.LENGTH_SHORT
             ).show()
-            adapter.addItem(pagoEvento)
-            calcular()
-            println(evento.pagos.toString())
             findViewById<EditText>(R.id.dateEditText).setText("")
             findViewById<EditText>(R.id.amountEditText).setText("")
         } else {
             Toast.makeText(
                 baseContext,
-                "No puede pagar mas del salto total del evento",
+                "No puede pagar mas del saldo total del evento",
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -135,9 +131,8 @@ class Pago : AppCompatActivity() {
     }
 
     fun imprimir() {
-
-        println("TOTAL: " + total)
-        println("PAGADO: " + pagado)
-        println("PENDIENTE: " + pendiente)
+        println("TOTAL: $total")
+        println("PAGADO: $pagado")
+        println("PENDIENTE: $pendiente")
     }
 }
