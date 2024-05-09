@@ -25,8 +25,6 @@ class CatalogoEventos : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_catalogo_eventos)
-        println(UserSession.getIdUsuario())
-
 
 //        val toolbar: Toolbar = findViewById(R.id.toolbar)
 //        setSupportActionBar(toolbar)
@@ -38,18 +36,15 @@ class CatalogoEventos : AppCompatActivity() {
         val toPago = findViewById<Button>(R.id.pago)
 
         btnIrADetalles.setOnClickListener {
-
             val intent = Intent(this, CrearEvento::class.java)
             startActivity(intent)
         }
-        toPago.setOnClickListener {
 
+        toPago.setOnClickListener {
             val intent = Intent(this, Pago::class.java)
             startActivity(intent)
         }
 
-
-        // PARA LISTAR EVENTOS
             val databaseReference = FirebaseDatabase.getInstance().getReference("eventos")
             databaseReference.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -69,6 +64,4 @@ class CatalogoEventos : AppCompatActivity() {
                 }
             })
     }
-
-
 }

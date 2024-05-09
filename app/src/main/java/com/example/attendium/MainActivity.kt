@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             when {
                 mEmail.isEmpty() || mPassword.isEmpty() -> {
                     Toast.makeText(
-                        baseContext, "Mail o contraseña incorrecta.",
+                        baseContext, "Correo o contraseña incorrecta.",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -49,7 +49,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        val signInButton = findViewById<AppCompatButton>(R.id.signInAppCompatButton)
         val createAccout = findViewById<AppCompatButton>(R.id.createAccountButton)
 
         createAccout.setOnClickListener {
@@ -58,24 +57,21 @@ class MainActivity : AppCompatActivity() {
 
 
         }
-//
-//        signInButton.setOnClickListener {
-//            // Acción al hacer clic en el botón
-//            val intent = Intent(this, CatalogoEventos::class.java)
-//            startActivity(intent)
-//        }
     }
 
     private fun SignIn(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Log.d("TAG", "signInWithEmail:success")
-                    UserSession.setIdUsuario(task.getResult().user?.uid)
+                    val userId = task.getResult().user?.uid
+
+                    if (userId != null) {
+                        UserSession.setIdUsuario(userId)
+                    }
                     reaload()
                 } else {
-                    Log.w("TAG", "signInWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, "No se pudo iniciar sesión", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
 

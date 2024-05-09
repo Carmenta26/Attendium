@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.attendium.adapters.AdapterPackage
+import com.example.attendium.configs.UserSession
 import com.example.attendium.data.Evento
 import com.example.attendium.data.Paquete
 import com.example.attendium.databinding.ActivityCrearEventoBinding
@@ -57,8 +58,7 @@ class CrearEvento : AppCompatActivity() {
             val nombreEvento = binding.eventName.text.toString()
             val fechaEvento = binding.eventDate.text.toString()
             paqueteSeleccionado?.let { paquete ->
-               // val userId = auth.currentUser?.uid
-                val userId = "kmds"
+                val userId = UserSession.getIdUsuario()
                 if (userId != null) {
                     val evento = Evento(userId, nombreEvento, fechaEvento, paquete)
                     val intent = Intent(this@CrearEvento, PreSaveEvento::class.java)
