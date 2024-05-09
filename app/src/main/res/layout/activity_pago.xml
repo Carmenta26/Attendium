@@ -17,6 +17,7 @@
         android:layout_marginEnd="24dp"
         android:gravity="center"
         android:text="Evento - {nombre_evento}"
+        android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
