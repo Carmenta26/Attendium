@@ -25,7 +25,7 @@ class AdapterTablePagos(private var items: MutableList<PagoEvento>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         holder.date.text = item.fecha
-        holder.amount.text = item.cantidad.toString()
+        holder.amount.text = "$"+item.cantidad.toString()
     }
 
     override fun getItemCount() = items.size

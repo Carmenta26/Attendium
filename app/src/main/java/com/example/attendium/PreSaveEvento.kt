@@ -12,10 +12,14 @@ import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
+
+
 import androidx.core.content.ContextCompat
 import com.example.attendium.data.Evento
 import com.example.attendium.data.Invitado
 import kotlin.properties.Delegates
+
 
 
 class PreSaveEvento : AppCompatActivity() {
@@ -31,7 +35,7 @@ class PreSaveEvento : AppCompatActivity() {
     private var precioFinal by Delegates.notNull<Int>()
     private lateinit var textViewNumeroPersonas: TextView
     private lateinit var textViewPrecioTotal: TextView
-    private lateinit var textViewTitle: TextView
+    private lateinit var textViewTitle: Toolbar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pre_save_evento)
@@ -44,11 +48,11 @@ class PreSaveEvento : AppCompatActivity() {
         crearEventoButton = findViewById(R.id.crearEvento)
         textViewNumeroPersonas = findViewById(R.id.textViewNumeroPersonas)
         textViewPrecioTotal = findViewById(R.id.textViewPrecioTotal)
-        textViewTitle = findViewById(R.id.titleEvento)
+        textViewTitle = findViewById<androidx.appcompat.widget.Toolbar>(R.id.titleEvento)
 
         // Recuperar el objeto Evento
         evento = intent.getParcelableExtra("evento")!!
-        textViewTitle.setText("Evento - ${evento.nombre}")
+        textViewTitle.title = "Evento - ${evento.nombre}"
 
         val buttonAgregar = findViewById<Button>(R.id.buttonAgregar)
         buttonAgregar.setOnClickListener {

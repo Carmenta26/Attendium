@@ -25,9 +25,7 @@ class CatalogoEventos : AppCompatActivity() {
         println(UserSession.getIdUsuario())
 
 
-//        val toolbar: Toolbar = findViewById(R.id.toolbar)
-//        setSupportActionBar(toolbar)
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 
         supportActionBar?.setHomeAsUpIndicator(R.drawable.calendar_days) // Para asegurarse que el ícono es visible
         val listView = findViewById<ListView>(R.id.listview_eventos)

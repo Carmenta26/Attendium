@@ -8,20 +8,18 @@
     tools:context=".MainActivity">
 
 
-    <TextView
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/eventNameTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:gravity="center"
-        android:text="Evento - {nombre_evento}"
-        android:textStyle="bold"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:titleTextColor="@color/white"
+        app:title="Evento - {nombre_evento}"
+        android:theme="?attr/actionBarTheme"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Bold" />
+
+
+
 
     <!-- Totales -->
 
@@ -74,6 +72,12 @@
         android:layout_marginEnd="24dp"
         android:background="@drawable/ic_buttom"
         android:text="Agregar"
+        app:icon="@drawable/botonagregar"
+        app:iconSize="20dp"
+        app:iconGravity="textEnd"
+        android:gravity="center"
+        app:iconPadding="10dp"
+        android:drawablePadding="10dp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -277,14 +281,19 @@
 
     <Button
         android:id="@+id/regresar"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_width="364dp"
+        android:layout_height="53dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/ic_buttom"
         android:text="Regresar al inicio"
         android:textColor="@color/white"
+        app:icon="@drawable/botonhogar"
+        app:iconGravity="textEnd"
+        app:iconPadding="10dp"
+        app:iconSize="20dp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

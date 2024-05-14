@@ -10,5 +10,8 @@
         <item name="colorOnSecondary">@android:color/white</item> <!-- Cambia el color en el secundario a blanco -->
     </style>
 
+    <style name="TextAppearance.AppCompat.Widget.ActionBar.Title.Bold" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textStyle">bold</item>
+    </style>
     <style name="Theme.Attendium" parent="Base.Theme.Attendium" />
 </resources>

@@ -4,84 +4,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="24dp"
     android:background="@color/white"
     tools:context=".CrearEvento">
 
-    <TextView
+
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/headerText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Organizador de evento - Crear evento"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:paddingStart="-24dp"
+        android:paddingEnd="-24dp"
+        android:drawableEnd="@drawable/calendar_days"
+        android:drawablePadding="16dp"
+        android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Crear evento"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Bold"
+        app:titleTextColor="@color/white" />
+
 
     <EditText
         android:id="@+id/eventName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
         android:background="@drawable/ic_field"
         android:hint="Nombre del evento"
-        android:layout_marginTop="16dp"
         android:padding="16dp"
-        app:layout_constraintTop_toBottomOf="@id/headerText"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerText" />
 
     <EditText
         android:id="@+id/eventDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
         android:background="@drawable/ic_field"
         android:hint="Fecha del evento"
+        android:drawableEnd="@drawable/calendar_days"
         android:inputType="date"
-        android:layout_marginTop="16dp"
-
-        app:layout_constraintTop_toBottomOf="@id/eventName"
-        app:layout_constraintStart_toStartOf="parent"
+        android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:padding="16dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/eventName" />
 
     <TextView
         android:id="@+id/tv_paquetes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
         android:text="Paquetes"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textStyle="bold"
-        android:layout_marginTop="16dp"
 
-        app:layout_constraintTop_toBottomOf="@id/eventDate"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/eventDate" />
 
     <GridView
         android:id="@+id/gridViewPaquetes"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:numColumns="2"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:horizontalSpacing="16dp"
+        android:numColumns="2"
         android:verticalSpacing="16dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_paquetes"
-        app:layout_constraintBottom_toTopOf="@id/seleccionar"
+        app:layout_constraintBottom_toTopOf="@+id/seleccionar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_paquetes" />
 
     <Button
         android:id="@+id/seleccionar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/ic_buttom"
         android:text="Guardar"
         android:textColor="@android:color/white"
-        android:background="@drawable/ic_buttom"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -20,7 +20,8 @@
             android:layout_height="?attr/actionBarSize"
             android:navigationIcon="@drawable/hogar"
             app:title="Catálogo de Eventos"
-            app:titleTextColor="@android:color/white" />
+            app:titleTextColor="@android:color/white"
+            app:titleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Bold"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <ListView
